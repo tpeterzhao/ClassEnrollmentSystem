@@ -9,32 +9,29 @@
     <ul>
       <li><a href="/professor">Home</a></li>
       <li><a href="/profCourses">My Courses</a></li>
-      <li><a href="/profAddClass">Add Course</li>
+      <li><a href="/profAddClass">Add Course</a></li>
       <li><a href="/logout">Log Out</a></li>
     </ul>
-    <h1>Welcome <%=professor.firstname %> <%=professor.lastname %></h1>
+    <h1>Your Courses:</h1>
+    <hr>
     <table>
       <tr>
         <th>CourseID</th>
-        <th>Course</th>
+        <th>Course Name</th>
         <th>Category</th>
         <th>Credit Hour</th>
         <th>Student Count</th>
       </tr>
-      <tr>
-        <th>001</th>
-        <th>Computational Geometry</th>
-        <th>Selective</th>
-        <th>3.0</th>
-        <th>30</th>
-      </tr>
-      <tr>
-        <th>012</th>
-        <th>Introduction to Artificial Intelegence</th>
-        <th>Selective</th>
-        <th>3.0</th>
-        <th>25</th>
-      </tr>
+      <% for(const teach of teaches){ %>
+          <tr>
+            <td><%=teach.code %></td>
+            <td><%=teach.name %></td>
+            <td><%=teach.category %></td>
+            <td><%=teach.credit_hours %></td>
+            <td><%=count %></td>
+          </tr>
+      <% } %>
+
     </table>
   </body>
 </html>

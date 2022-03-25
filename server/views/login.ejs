@@ -8,7 +8,7 @@
   <body>
     <h1>Welcome!</h1>
     <div class="login">
-      <form class="" action="/login" method="post">
+      <form name="login" action="/login" method="post">
         <label for="">Username:</label>
         <input type="text" name="username" value="">
         <label for="">Password:</label>
@@ -18,5 +18,15 @@
       <button type="button" name="button" onclick="location.href='/studentsignup'">Student Sign Up</button>
       <button type="button" name="button" onclick="location.href='/teachersignup'">Teacher Sign Up</button>
     </div>
+    <script type="text/javascript">
+      function validateForm(){
+        var username = document.forms["login"]["username"].value
+        var password = document.forms["signup"]["password"].value
+        if(username == "" || password == ""){
+          alert("Please enter Username and Password")
+          return false
+        }
+      }
+    </script>
   </body>
 </html>

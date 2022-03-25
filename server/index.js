@@ -126,6 +126,54 @@ app.get('/professor', async (req,res)=>{
   )
   res.render('Professor',{professor: rows[0]})
 })
+app.get('/profCourses', async (req,res)=>{
+  if(!req.session.loggedin){
+    return res.redirect('/login')
+  }
+  let username = req.session.username
+  const teaches = await db.query(
+    'SELECT courses.category, courses.code, courses.name, courses.credit_hours FROM teaches '+
+    'RIGHT JOIN courses ON (teaches.category,teaches.code)=(courses.category,courses.code) '+
+    'WHERE username = $1',[username]
+  )
+
+  //TODO: add current student count for each course
+
+  res.render('stdCourses',{teaches: teaches})
+})
+
+app.get('/stdAddClass', (req,res)=>{
+  if(!req.session.loggedin){
+    return res.redirect('/login')
+  }
+  res.render('stdAddClass')
+})
+app.post('/stdAddClass', async (req,res)=>{
+  if(!req.session.loggedin){
+    return res.redirect('/login')
+  }
+  console.log(req.body.code)
+  //TODO: add class for student
+
+
+  return res.redirect('/student')
+})
+
+app.get('/profAddClass', (req,res)=>{
+  if(!req.session.loggedin){
+    return res.redirect('/login')
+  }
+  res.render('profAddClass')
+})
+app.post('/profAddClass', async (req,res)=>{
+  if(!req.session.loggedin){
+    return res.redirect('/login')
+  }
+  //TODO: add class for professor
+
+  return res.redirect('/professor')
+})
+
 
 app.listen(port,()=>{
   console.log('running on port: '+port+' .')
