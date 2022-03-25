@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Student</title>
+  </head>
+  <body>
+    <ul>
+      <li><a href="/student">Home</a></li>
+      <li><a href="/stdCourses">My Courses</a></li>
+      <li><a href="/stdAddClass">Add Course</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+    <h1>Your Courses:</h1>
+    <hr>
+    <table>
+      <tr>
+        <th>CourseID</th>
+        <th>Course Name</th>
+        <th>Category</th>
+        <th>Credit Hour</th>
+        <th>Grade</th>
+      </tr>
+      <% for(const taken of takens){ %>
+          <tr>
+            <td><%=taken.code %></td>
+            <td><%=taken.name %></td>
+            <td><%=taken.category %></td>
+            <td><%=taken.credit_hours %></td>
+            <td><%=taken.grade %></td>
+          </tr>
+      <% } %>
+
+    </table>
+  </body>
+</html>

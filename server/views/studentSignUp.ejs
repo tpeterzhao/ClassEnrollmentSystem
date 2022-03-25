@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Student Sign Up</title>
+  </head>
+  <body>
+    <h1>Student Sign Up</h1>
+    <div>
+      <form name="signup" action="/studentsignup" onsubmit="return validateForm()" method="post">
+        First Name: <input type="text" name="firstname" value=""><br>
+        Last Name: <input type="text" name="lastname" value=""><br>
+        Major: <input type="text" name="major" value=""><br>
+        Password: <input type="password" name="password" value=""><br>
+        Confirm Password: <input type="password" name="confirm_pass" value=""><br>
+        <input type="submit" name="" value="Register">
+        <button type="button" name="button" onclick="location.href='/login'">Back</button><br>
+      </form>
+    </div>
+    <script type="text/javascript">
+      function validateForm(){
+        var firstname = document.forms["signup"]["firstname"].value
+        var lastname = document.forms["signup"]["lastname"].value
+        var password = document.forms["signup"]["password"].value
+        var confirm_pass = document.forms["signup"]["confirm_pass"].value
+        var major = document.forms["signup"]["major"].value
+        if(firstname == "" || lastname == ""){
+          alert("Name can not be empty")
+          return false
+        }
+        if(password == "" || confirm_pass == ""){
+          alert("Password can not be empty")
+          return false
+        }else if(password.localeCompare(confirm_pass)!=0){
+          alert("Confirm password does not match")
+          return false
+        }
+        if(major == ""){
+          alert("Major can not be empty")
+          return false
+        }
+      }
+    </script>
+  </body>
+</html>
